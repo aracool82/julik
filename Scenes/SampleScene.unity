@@ -783,6 +783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c915ab1f9ca1cd4bac99e69f571133a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startVolume: 0
+  _stepTime: 0.2
 --- !u!114 &1479417665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,6 +797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54df6ba0d6b8294baee8edadd1ab8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _signal: {fileID: 1479417667}
+  _changeValume: {fileID: 1479417664}
 --- !u!4 &1479417666
 Transform:
   m_ObjectHideFlags: 0
@@ -916,8 +920,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9163477, y: 1, z: 11.071124}
-  m_Center: {x: 0.000076621865, y: 0, z: 0.9093467}
+  m_Size: {x: 0.7761663, y: 1, z: 9.893187}
+  m_Center: {x: -0.0011498404, y: 0, z: 0.74245775}
 --- !u!1 &1576964344
 GameObject:
   m_ObjectHideFlags: 0

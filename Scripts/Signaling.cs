@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(ChangeValume))]
+
 public class Signaling : MonoBehaviour
 {
-    private AudioSource _signal;
-    private ChangeValume _changeValume;
+    [SerializeField] private AudioSource _signal;
+    [SerializeField] private ChangeValume _changeValume;
 
     private void Awake()
     {
@@ -13,33 +15,30 @@ public class Signaling : MonoBehaviour
         _changeValume.enabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider someBody)
     {
-        if (other.tag == "Player")
+        if (someBody.TryGetComponent(out PlayerMove playerMove))
         {
             _changeValume.enabled = true;
-        }
+            if (!_signal.isPlaying)
+                _signal.Play();
+        } 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider someBody)
     {
-        if (other.tag == "Player")
-        {
+        if (someBody.TryGetComponent(out PlayerMove playerMove))
+        { 
+            _changeValume.enabled = false;
             if (_signal.isPlaying)
-            { 
                 _signal.Stop();
-                _changeValume.enabled = false;            
-            }
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider someBody)
     {
-        if (other.tag == "Player")
-        {
-            if (_signal.isPlaying)
-                return;
-            _signal.Play();
-        }
+        if (someBody.TryGetComponent(out PlayerMove playerMove))
+            if (!_signal.isPlaying)
+                _signal.Play();
     }
 }
